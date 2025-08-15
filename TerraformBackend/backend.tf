@@ -81,11 +81,11 @@ variable "region" {
 variable "bucket_name" {
     description = "Name of the S3 bucket for Terraform state"
     type        = string
-    default     = "ecommerce-terraform-state-sr"
+    default     = "ecommerce-terraform-state-205930632952"
 }
 
 variable "dynamodb_table_name" {
     description = "Name of the DynamoDB table for state locking"
     type        = string
-    default     = "ecommerce-terraform-locks-sr"
+    default     = "ecommerce-terraform-locks"
 }
