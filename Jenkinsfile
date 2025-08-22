@@ -72,7 +72,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        withAWS(credentials: 'my-aws-details', region: "${params.AWS_REGION}") {
+                        withAWS(credentials: 'access-key', region: "${params.AWS_REGION}") {
                             sh "aws ecr describe-repositories --repository-names projectme-ak --region ${params.AWS_REGION} || aws ecr create-repository --repository-name projectme-ak --region ${params.AWS_REGION}"
                         }
                     } catch (Exception e) {
