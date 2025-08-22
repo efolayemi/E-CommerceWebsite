@@ -2,8 +2,8 @@ pipeline {
        agent any
 
        parameters {
-           string(name: 'AWS_ACCOUNT_ID', defaultValue: '205930632952', description: 'AWS Account ID')
-           string(name: 'AWS_REGION', defaultValue: 'us-west-2', description: 'AWS Region')
+           string(name: 'AWS_ACCOUNT_ID', defaultValue: '176703804236', description: 'AWS Account ID')
+           string(name: 'AWS_REGION', defaultValue: 'eu-west-2', description: 'AWS Region')
            string(name: 'IMAGE_TAG', defaultValue: '', description: 'Docker image tag (leave blank to use build number and commit hash)')
            string(name: 'CLUSTER_NAME', defaultValue: 'ecom-cluster', description: 'EKS Cluster Name')
            string(name: 'TEST_PORT', defaultValue: '8081', description: 'Host port for testing Docker image (use 0 for random port)')
@@ -83,7 +83,7 @@ pipeline {
                steps {
                    script {
                        try {
-                           withAWS(credentials: 'access-key', region: "${params.AWS_REGION}") {
+                           withAWS(credentials: 'my-aws-details', region: "${params.AWS_REGION}") {
                                sh "aws ecr describe-repositories --repository-names projectme-ak --region ${params.AWS_REGION} || aws ecr create-repository --repository-name projectme-ak --region ${params.AWS_REGION}"
                            }
                        } catch (Exception e) {
